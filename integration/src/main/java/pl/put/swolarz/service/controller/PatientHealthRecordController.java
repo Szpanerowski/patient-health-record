@@ -7,14 +7,8 @@ import pl.put.swolarz.service.dto.PatientDto;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("/health")
 public interface PatientHealthRecordController {
 
-    @ResponseBody
-    @RequestMapping(path="/patients", method = RequestMethod.GET)
-    List<PatientDto> getAllPatients();
-
-    @RequestMapping(path = "/patient/{id}", method = RequestMethod.GET)
-    ResponseEntity<PatientDetailsDto> getPatientDetails(@PathVariable("id") String id);
+    ResponseEntity<List<PatientDto>> getAllPatients();
+    ResponseEntity<PatientDetailsDto> getPatientDetails(String id);
 }

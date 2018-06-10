@@ -1,0 +1,23 @@
+
+.PatientSearcher {
+    padding: 1em;
+    padding-right: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.PatientSearcher label {
+    font-size: 1.5em;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
+
+.PatientSearcher input[type=text] {
+    width: 50%;
+    font-size: 1em;
+    margin: 0 1em;
+    padding-left: 0.5em;
+    flex: 1;
+}

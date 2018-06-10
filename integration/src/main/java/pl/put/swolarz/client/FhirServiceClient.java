@@ -10,7 +10,7 @@ import java.util.List;
 public interface FhirServiceClient {
 
     List<Patient> getAllPatients();
-    Patient getPatientById();
+    Patient getPatientById(String patientId);
 
     List<Observation> getObservationsForPatient(String patientId);
     List<MedicationRequest> getMedicationRequestsForPatient(String patientId);

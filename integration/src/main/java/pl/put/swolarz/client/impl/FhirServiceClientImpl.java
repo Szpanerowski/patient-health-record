@@ -2,10 +2,11 @@ package pl.put.swolarz.client.impl;
 
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.rest.client.api.IGenericClient;
-import org.hl7.fhir.dstu3.model.Bundle;
-import org.hl7.fhir.dstu3.model.MedicationRequest;
-import org.hl7.fhir.dstu3.model.Observation;
-import org.hl7.fhir.dstu3.model.Patient;
+import ca.uhn.fhir.rest.gclient.ICriterion;
+import ca.uhn.fhir.rest.gclient.IParam;
+import ca.uhn.fhir.rest.gclient.IQuery;
+import org.hl7.fhir.dstu3.model.*;
+import org.hl7.fhir.instance.model.api.IBaseBundle;
 import org.hl7.fhir.instance.model.api.IBaseResource;
 import org.springframework.stereotype.Service;
 import pl.put.swolarz.client.FhirServiceClient;
@@ -26,43 +27,85 @@ public class FhirServiceClientImpl implements FhirServiceClient {
     @PostConstruct
     public void init() {
         context = FhirContext.forDstu3();
-        context.getRestfulClientFactory().setSocketTimeout(5 * 60 * 1000); // 5-minute timeout
+        context.getRestfulClientFactory().setSocketTimeout(5 * 60 * 1000);
 
         client = context.newRestfulGenericClient(FHIR_SERVER_BASE);
     }
 
     @Override
     public List<Patient> getAllPatients() {
-        return null;
+
+        IParam orderBy = Patient.NAME;
+
+        return getAll(Patient.class, null, orderBy, true);
     }
 
     @Override
-    public Patient getPatientById() {
-        return null;
+    public Patient getPatientById(String patientId) {
+        return get(Patient.class, patientId);
     }
 
     @Override
     public List<Observation> getObservationsForPatient(String patientId) {
-        return null;
+
+        ICriterion where = Observation.PATIENT.hasId(patientId);
+        IParam orderBy = Observation.DATE;
+
+        return getAll(Observation.class, where, orderBy, false);
     }
 
     @Override
     public List<MedicationRequest> getMedicationRequestsForPatient(String patientId) {
-        return null;
+
+        ICriterion where = MedicationRequest.PATIENT.hasId(patientId);
+        IParam orderBy = MedicationRequest.AUTHOREDON;
+
+        return getAll(MedicationRequest.class, where, orderBy, false);
     }
 
-    private <T extends IBaseResource> List<T> getAll(Class<T> resource) {
+    private <T extends IBaseResource> List<T> getAll(Class<T> resource, ICriterion criterion, IParam orderBy, boolean ascending) {
 
         try{
-            Bundle result = client.search().forResource(resource).returnBundle(Bundle.class).execute();
-            List<T> entries = (List<T>) result.getEntry().stream().map(Bundle.BundleEntryComponent::getResource).collect(Collectors.toList());
+            Bundle result = fetchSearchResult(resource, criterion, orderBy, ascending);
 
-            return entries;
+            return (List<T>) loadPages(result);
 
         } catch(Exception e) {
             e.printStackTrace();
             return new ArrayList<>();
         }
+    }
+
+    private List<? extends Resource> loadPages(Bundle result) {
+
+        List<Resource> resources = new ArrayList<>();
+        resources.addAll(result.getEntry().stream().map(Bundle.BundleEntryComponent::getResource).collect(Collectors.toList()));
+
+        while (result.getLink(Bundle.LINK_NEXT) != null) {
+
+            result = client.loadPage().next(result).execute();
+            resources.addAll(result.getEntry().stream().map(Bundle.BundleEntryComponent::getResource).collect(Collectors.toList()));
+        }
+
+        return resources;
+    }
+
+    private <T extends IBaseResource> Bundle fetchSearchResult(Class<T> resource, ICriterion criterion, IParam orderBy, boolean ascending) {
+
+        IQuery<IBaseBundle> query = client.search().forResource(resource);
+
+        if (criterion != null)
+            query.where(criterion);
+
+        if (orderBy != null) {
+
+            if (ascending)
+                query.sort().ascending(orderBy);
+            else
+                query.sort().descending(orderBy);
+        }
+
+        return query.returnBundle(Bundle.class).execute();
     }
 
     private <T extends IBaseResource> T get(Class<T> resource, String id) {

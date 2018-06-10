@@ -2,6 +2,7 @@ package pl.put.swolarz.service.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.hl7.fhir.dstu3.model.HumanName;
 import org.hl7.fhir.dstu3.model.Patient;
 
@@ -10,9 +11,9 @@ import java.util.Date;
 import java.util.List;
 
 @Data
-public class PatientDto implements Serializable {
+@EqualsAndHashCode(callSuper = true)
+public class PatientDto extends ResourceDto {
 
-    private String id;
     private String firstName;
     private String lastName;
     private String gender;
@@ -22,22 +23,14 @@ public class PatientDto implements Serializable {
 
 
     public PatientDto(Patient patient) {
+        super(patient);
 
         List<HumanName> names = patient.getName();
         HumanName name = names.stream().filter(n -> n.getUse().equals(HumanName.NameUse.OFFICIAL)).findFirst().orElse(names.get(0));
 
-        this.id = patient.getId();
         this.firstName = name.getGiven().get(0).getValue();
         this.lastName = name.getFamily();
         this.gender = patient.getGender().getDisplay();
         this.birthDate = patient.getBirthDate();
-
-        correctNames();
-    }
-
-    private void correctNames() {
-
-        firstName = firstName.replaceAll("[0-9]", "");
-        lastName = lastName.replaceAll("[0-9]", "");
     }
 }

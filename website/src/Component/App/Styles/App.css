@@ -1,0 +1,33 @@
+.App {
+  height: 100%;
+  overflow: hidden;
+}
+
+.App header {
+  height: 10%;
+  padding-left: 2em;
+}
+
+.App header h1 {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.App main {
+  display: flex;
+  flex-direction: row;
+  height: 80%;
+}
+
+.patient-details {
+  flex: 5;
+  margin-left: 1em;
+  border-style: solid;
+}
+
+.patient-records {
+  flex: 3;
+  margin: 0 1em;
+  border-style: solid;
+  border-color: blue;
+  overflow-y: scroll, hidden;
+}
