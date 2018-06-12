@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/health")
+@CrossOrigin
 public class PatientHealthRecordControllerImpl implements PatientHealthRecordController {
 
     @Autowired

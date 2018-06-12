@@ -1,5 +1,16 @@
 
+.PatientRecords {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
 .PatientRecords .PatientSearcher {
     border-style: solid;
     border-color: darkcyan;
+}
+
+.PatientRecords .PatientsList {
+    overflow-x: hidden;
+    overflow-y: auto;
 }

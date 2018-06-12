@@ -6,28 +6,32 @@ class PatientsList extends React.Component {
     constructor(props) {
         super(props);
 
+        this.renderPatients = this.renderPatients.bind(this);
+
         this.state = {
-            patients: [],
-            lastName: this.props.lastName
+            patients: []
         };
     }
 
-    componentWillMount() {
-        this.setState({
-            patients: this.props.patients.filter(
-                patient => patient.lastName.startsWith(this.props.lastName)
-            )
-            .map(patient => {
-                return <PatientListItem patient={patient} onSelect={this.props.onSelect(patient.id)} />;
-            })
-        });
+    componentWillReceiveProps(props) {
+
+        console.log('List received patients:');
+        console.log(props.patients);
+    }
+
+    renderPatients(patients) {
+        return patients.map(patient =>
+            <PatientListItem key={patient.id} patient={patient} onSelect={this.props.onSelect(patient.id)} />
+        );
     }
 
     render() {
         return (
-            <ul>
-                {this.state.patients}
-            </ul>
+            <div className="PatientsList">
+                <ul>
+                    {this.renderPatients(this.props.patients)}
+                </ul>
+            </div>
         );
     }
 }

@@ -35,7 +35,7 @@ public class FhirServiceClientImpl implements FhirServiceClient {
     @Override
     public List<Patient> getAllPatients() {
 
-        IParam orderBy = Patient.NAME;
+        IParam orderBy = Patient.FAMILY;
 
         return getAll(Patient.class, null, orderBy, true);
     }
