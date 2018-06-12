@@ -1,5 +1,5 @@
 import React from 'react';
-import PatientListItem from './PatientListItem';
+import PatientItem from './PatientItem';
 import './Styles/PatientsList.css';
 
 class PatientsList extends React.Component {
@@ -13,15 +13,9 @@ class PatientsList extends React.Component {
         };
     }
 
-    componentWillReceiveProps(props) {
-
-        console.log('List received patients:');
-        console.log(props.patients);
-    }
-
     renderPatients(patients) {
         return patients.map(patient =>
-            <PatientListItem key={patient.id} patient={patient} onSelect={this.props.onSelect(patient.id)} />
+            <PatientItem key={patient.id} patient={patient} onSelect={this.props.onSelect} />
         );
     }
 

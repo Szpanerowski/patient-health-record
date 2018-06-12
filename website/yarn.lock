@@ -2,6 +2,10 @@
 # yarn lockfile v1
 
 
+"@types/node@*":
+  version "10.3.2"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.3.2.tgz#3840ec6c12556fdda6e0e6d036df853101d732a4"
+
 abab@^1.0.3:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/abab/-/abab-1.0.4.tgz#5faad9c2c07f60dd76770f71cf025b62a63cfd4e"
@@ -1424,6 +1428,10 @@ class-utils@^0.3.5:
     define-property "^0.2.5"
     isobject "^3.0.0"
     static-extend "^0.1.1"
+
+classnames@^2.2.0:
+  version "2.2.6"
+  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
 
 clean-css@4.1.x:
   version "4.1.11"
@@ -3958,6 +3966,10 @@ jest@20.0.4:
   dependencies:
     jest-cli "^20.0.4"
 
+jquery@^3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.3.1.tgz#958ce29e81c9790f31be7792df5d4d95fc57fbca"
+
 js-base64@^2.1.9:
   version "2.4.5"
   resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.4.5.tgz#e293cd3c7c82f070d700fc7a1ca0a2e69f101f92"
@@ -4911,6 +4923,12 @@ parse5@^1.5.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/parse5/-/parse5-1.5.1.tgz#9b7f3b0de32be78dc2401b17573ccaf0f6f59d94"
 
+parse5@^3.0.2:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/parse5/-/parse5-3.0.3.tgz#042f792ffdd36851551cf4e9e066b3874ab45b5c"
+  dependencies:
+    "@types/node" "*"
+
 parseurl@~1.3.2:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/parseurl/-/parseurl-1.3.2.tgz#fc289d4ed8993119460c156253262cdc8de65bf3"
@@ -5378,7 +5396,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.5.10, prop-types@^15.6.0:
+prop-types@^15.5.0, prop-types@^15.5.10, prop-types@^15.5.6, prop-types@^15.6.0:
   version "15.6.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.1.tgz#36644453564255ddda391191fb3a125cbdf654ca"
   dependencies:
@@ -5507,6 +5525,10 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-attr-converter@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/react-attr-converter/-/react-attr-converter-0.3.1.tgz#4a2abf6d907b7ddae4d862dfec80e489ce41ad6e"
+
 react-dev-utils@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-5.0.1.tgz#1f396e161fe44b595db1b186a40067289bf06613"
@@ -5530,7 +5552,7 @@ react-dev-utils@^5.0.1:
     strip-ansi "3.0.1"
     text-table "0.2.0"
 
-react-dom@16.4.0:
+react-dom@^16.4.0:
   version "16.4.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.4.0.tgz#099f067dd5827ce36a29eaf9a6cdc7cbf6216b1e"
   dependencies:
@@ -5542,6 +5564,19 @@ react-dom@16.4.0:
 react-error-overlay@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-4.0.0.tgz#d198408a85b4070937a98667f500c832f86bd5d4"
+
+react-fontawesome@^1.6.1:
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/react-fontawesome/-/react-fontawesome-1.6.1.tgz#eddce17e7dc731aa09fd4a186688a61793a16c5c"
+  dependencies:
+    prop-types "^15.5.6"
+
+react-render-html@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/react-render-html/-/react-render-html-0.6.0.tgz#1af51d859ed75474435a1c65c293a48e12c36627"
+  dependencies:
+    parse5 "^3.0.2"
+    react-attr-converter "^0.3.1"
 
 react-scripts@1.1.4:
   version "1.1.4"
@@ -5588,7 +5623,14 @@ react-scripts@1.1.4:
   optionalDependencies:
     fsevents "^1.1.3"
 
-react@16.4.0:
+react-tabs@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/react-tabs/-/react-tabs-2.2.2.tgz#2f2935da379889484751d1df47c1b639e5ee835d"
+  dependencies:
+    classnames "^2.2.0"
+    prop-types "^15.5.0"
+
+react@^16.4.0:
   version "16.4.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.4.0.tgz#402c2db83335336fba1962c08b98c6272617d585"
   dependencies:

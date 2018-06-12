@@ -27,7 +27,10 @@ public class PatientDetailsDto extends PatientDto {
         this.medicationRequests = medicationRequests.stream().map(MedicationRequestDto::new).collect(Collectors.toList());
     }
 
+    @Override
     public void updatePatient(Patient patient) {
+        super.updatePatient(patient);
+
         // Todo update patient entity
     }
 }

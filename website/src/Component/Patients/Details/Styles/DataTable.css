@@ -1,0 +1,15 @@
+
+.patient-data-table {
+    border-style: solid;
+    overflow-y: auto;
+    width: 100%;
+    padding: 1em;
+}
+
+.patient-data-table thead tr {
+    border-bottom: solid
+}
+
+.patient-data-table thead td {
+    font-weight: bold;
+}

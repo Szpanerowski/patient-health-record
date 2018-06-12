@@ -19,13 +19,13 @@
 }
 
 .patient-details {
-  flex: 5;
+  flex: 2;
   margin-left: 1em;
   border-style: solid;
 }
 
 .patient-records {
-  flex: 3;
+  flex: 1;
   margin: 0 1em;
   border-style: solid;
   border-color: blue;

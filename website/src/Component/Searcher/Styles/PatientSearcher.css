@@ -15,7 +15,6 @@
 }
 
 .PatientSearcher input[type=text] {
-    width: 50%;
     font-size: 1em;
     margin: 0 1em;
     padding-left: 0.5em;

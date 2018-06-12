@@ -34,10 +34,6 @@ class PatientRecords extends React.Component {
         if (filter == null) {
             return patients;
         }
-        
-        console.log()
-        console.log(filter);
-        console.log(`Filtering patients with last name not like "${filter.lastName}"...`);
 
         let filteredPatients = patients;
         if (filter != null) {
@@ -47,15 +43,10 @@ class PatientRecords extends React.Component {
             );
         }
 
-        console.log(`Filtered ${patients.length - filteredPatients.length} patients.`);
-
         return filteredPatients;
     }
 
     onPatientsLoaded(loadedPatients) {
-        console.log('Patients loaded!');
-        console.log(loadedPatients);
-
         this.setState({
             patients: loadedPatients,
             filteredPatients: this.filterPatients(loadedPatients, this.state.filter)

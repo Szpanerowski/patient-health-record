@@ -8,10 +8,16 @@ class App extends Component {
     super(props);
 
     this.onPatientSelected = this.onPatientSelected.bind(this);
+
+    this.state = {
+      selectedPatientId: null
+    }
   }
 
   onPatientSelected(patientId) {
-
+    this.setState({
+      selectedPatientId: patientId
+    });
   }
 
   render() {
@@ -22,7 +28,7 @@ class App extends Component {
         </header>
         <main>
           <div className="patient-details">
-            <PatientDetails />
+            <PatientDetails patientId={this.state.selectedPatientId} />
           </div>
           <div className="patient-records">
             <PatientRecords onPatientSelected={this.onPatientSelected} />

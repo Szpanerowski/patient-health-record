@@ -33,4 +33,8 @@ public class PatientDto extends ResourceDto {
         this.gender = patient.getGender().getDisplay();
         this.birthDate = patient.getBirthDate();
     }
+
+    public void updatePatient(Patient patient) {
+        // Todo update patient entity
+    }
 }
