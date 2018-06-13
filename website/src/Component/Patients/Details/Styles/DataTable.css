@@ -1,9 +1,7 @@
 
 .patient-data-table {
     border-style: solid;
-    overflow-y: auto;
     width: 100%;
-    padding: 1em;
 }
 
 .patient-data-table thead tr {

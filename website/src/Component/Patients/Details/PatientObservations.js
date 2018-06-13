@@ -7,8 +7,8 @@ class PatientObservations extends React.Component {
             observations.map(observation => {
                 return (
                     <tr key={observation.id}>
-                        <td>{observation.description}</td>
                         <td>{observation.time}</td>
+                        <td>{observation.description}</td>
                         <td>{observation.code}</td>
                         <td>{observation.value}</td>
                         <td>{observation.comment}</td>
@@ -21,11 +21,11 @@ class PatientObservations extends React.Component {
     render() {
         return (
             <div className="PatientObservations">
-                <table className="patient-data-table">
+                <table className="patient-data-table" border="1">
                     <thead>
                         <tr>
-                            <td>Description</td>
                             <td>Time</td>
+                            <td>Description</td>
                             <td>Code</td>
                             <td>Value</td>
                             <td>Comment</td>

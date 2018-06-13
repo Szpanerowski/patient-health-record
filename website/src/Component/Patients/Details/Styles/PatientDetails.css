@@ -60,6 +60,7 @@
 
 .PatientDetails .health-info .react-tabs .health-info-tab {
     height: 100%;
+    overflow-y: auto;
 }
 
 .PatientDetails .health-info .react-tabs__tab {
