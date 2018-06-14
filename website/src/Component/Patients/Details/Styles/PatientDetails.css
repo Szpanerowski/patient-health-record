@@ -56,11 +56,16 @@
 .PatientDetails .health-info .react-tabs {
     display: flex;
     flex-direction: column;
+    justify-content: stretch;
 }
 
 .PatientDetails .health-info .react-tabs .health-info-tab {
     height: 100%;
     overflow-y: auto;
+}
+
+.PatientDetails .health-info .react-tabs .health-info-stretched-tab {
+    height: 100%;
 }
 
 .PatientDetails .health-info .react-tabs__tab {

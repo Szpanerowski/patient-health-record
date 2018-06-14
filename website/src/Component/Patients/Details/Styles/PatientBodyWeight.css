@@ -1,0 +1,26 @@
+
+.PatientBodyWeight {
+    display: flex;
+    flex-direction: column;
+}
+
+.PatientBodyWeight .patient-data-chart {
+    flex: 1;
+    padding: 1em;
+}
+
+.PatientBodyWeight .date-range-picker {
+    display: flex;
+    align-self: stretch;
+    justify-content: flex-end;
+    padding: 1em;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-color: aquamarine;
+}
+
+.PatientBodyWeight .date-range-picker > * {
+    display: inline;
+    font-weight: bold;
+    margin: 0.25em;
+}

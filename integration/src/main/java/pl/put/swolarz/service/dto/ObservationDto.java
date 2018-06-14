@@ -28,7 +28,7 @@ public class ObservationDto extends ResourceDto {
 
         this.description = observation.getCode().getText();
         if (this.description == null)
-            this.description = "Undefined patient observation...";
+            this.description = "Patient observation";
 
         try{
             this.code = observation.getCode().getCoding().get(0).getCode();

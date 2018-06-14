@@ -57,7 +57,7 @@ class PatientDetails extends React.Component {
                 {addressLines}
                 <span>{address.postalCode}, {address.city}</span>
             </div>
-        )
+        );
     }
 
     render() {
@@ -72,9 +72,7 @@ class PatientDetails extends React.Component {
             <div className="PatientDetails">
                 <div className="general-details">
                     <div className="gender-details">
-                        <img src={'/' + (this.state.patient.gender === 'Female' ? 'female-patient.png' : 'male-patient.png')}
-                            alt="Patient" />
-                        {/* <button>Change gender</button> */}
+                        <img src={'/' + (this.state.patient.gender === 'Female' ? 'female-patient.png' : 'male-patient.png')} alt="Patient" />
                     </div>
                     <div className="personal-details">
                         <h2>{this.state.patient.firstName + ' ' + this.state.patient.lastName}</h2>
